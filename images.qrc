@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/images/ModelMapFlowerGardens.png</file>
+        <file>resources/images/ModelMap.png</file>
+        <file>resources/images/ModelMapMeadow.png</file>
+    </qresource>
+</RCC>
