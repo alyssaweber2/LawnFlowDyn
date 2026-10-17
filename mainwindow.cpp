@@ -154,8 +154,9 @@ void MainWindow::reproduction(int x, int y)
         // Checks all neighborhood coordinates for validity, attains all flower types in neighborhood and puts
         // them into flowerNeighbors vector
         for (int c  = 0; c < neighborhood.size(); c++) {
-            if (x + neighborhood[c].x >= 0 && y + neighborhood[c].y >= 0) {
-                flowerNeighbors.insert(lawnPlants[y][x].getPlantType());
+            if (x + neighborhood[c].x >= 0 && x + neighborhood[c].x < xSize &&
+                y + neighborhood[c].y >= 0 && y + neighborhood[c].y < ySize) {
+                flowerNeighbors.insert(lawnPlants[y + neighborhood[c].y][x + neighborhood[c].x].getPlantType());
             }
         }
 
@@ -207,8 +208,9 @@ void MainWindow::reproduction(int x, int y)
                 }
                 break;
             }
-            setVector.clear(); // Clearing the vector for the next cell
         }
+
+        setVector.clear(); // Clearing the vector for the next cell
     }
 }
 
@@ -578,8 +580,8 @@ void MainWindow::on_pushButton_Start_clicked()
 
         // Processing the GUI to be able to see daily changes with short delay between timesteps
 
-        QEventLoop loop; // attained from AI Qwen  30B Instruct
-        QTimer::singleShot(500, &loop, &QEventLoop::quit);
+        QEventLoop loop;
+        QTimer::singleShot(100, &loop, &QEventLoop::quit);
         loop.exec();
     }
 
